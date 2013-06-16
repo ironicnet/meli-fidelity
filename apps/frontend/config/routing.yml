@@ -8,6 +8,11 @@ items:
 orders:
   url: /items/orders
   param: { module: orders, action: index }
+
+order_detail: 
+  url: /order/:id/detail
+  param: { module: orders, action: detail }
+
 orderMessages:
   url: /order/:id/messages
   param: { module: orders, action: getMessages }

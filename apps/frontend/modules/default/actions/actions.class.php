@@ -3,7 +3,7 @@ class defaultActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-     $this->orders = $this->getUser()->getOrders();
-     $this->publications = $this->getUser()->getPublications();
+     $this->orders = MeliOrderTable::getInstance()->getOrders($this->getUser()->getMELIUserId());
+     $this->sales = MeliOrderTable::getInstance()->getSales($this->getUser()->getMELIUserId());
   }
 }

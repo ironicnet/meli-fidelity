@@ -10,7 +10,21 @@ MeliOrder:
   actAs:
     Timestampable: ~
   columns:
-    meli_order_id: { type: string(255), notnull: true }
+    meli_order_id: { type: integer, notnull: true }
+    item_id: { type: string(255), notnull: true }
+    buyer_id: { type: integer, notnull: true }
+    buyer_nickname: { type: string(255), notnull: true }
+    buyer_email: { type: string(255), notnull: true }
+    seller_id: { type: integer, notnull: true }
+    seller_nickname: { type: string(255), notnull: true }
+    seller_email: { type: string(255), notnull: true }
+    date_created: { type: datetime, notnull: true }
+    title: { type: string(255), notnull: true }
+    quantity: { type: integer, notnull: true }
+    unit_price: { type: float, notnull: true }
+    currency_id: { type: string(10), notnull: true }
+    thumbnail: { type: string(255) }
+    status: { type: string(50), notnull: true }
 
 ChatMessage:
   actAs:

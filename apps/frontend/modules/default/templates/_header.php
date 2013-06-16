@@ -14,10 +14,10 @@
          <?php if($user = $sf_user->getMELIUser()): ?>
 
          <div class="nav-collapse collapse">
-            <ul class="nav">
+            <!--<ul class="nav">
                <li><a href="<?php echo url_for("@items"); ?>">Mis publicaciones</a></li>
                <li><a href="<?php echo url_for("@orders"); ?>">Mis compras</a></li>
-            </ul>
+            </ul>-->
 
             <ul class="nav pull-right">
                <li class="dropdown">

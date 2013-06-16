@@ -26,5 +26,11 @@ class ordersActions extends sfActions
         $this->logMessage("	eventType: $eventType", 'info');
         $this->logMessage("	message: $message", 'info');
 	return $this->renderText(json_encode(ChatMessageTable::getInstance()->createMessage($orderId, $userId, $eventType, $message)));
-  }
+     }
+
+     public function executeDetail(sfWebRequest $request)
+     {
+        $this->order = MeliOrderTable::getInstance()->findOneByMeliOrderId($request->getParameter("id"));
+        $this->forward404Unless($this->order);
+     }
 }
