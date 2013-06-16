@@ -1,0 +1,21 @@
+User:
+  actAs:
+    Timestampable: ~
+  columns:
+    meli_id: { type: string(255), notnull: true }
+    username: { type: string(255), notnull: true }
+    email: { type: string(255), notnull: true }
+
+Order:
+  actAs:
+    Timestampable: ~
+  columns:
+    meli_order_id: { type: string(255), notnull: true }
+
+ChatMessage:
+  actAs:
+    Timestampable: ~
+  columns:
+    meli_order_id: { type: integer, notnull: true }
+    user_id: { type: integer, notnull: true }
+    message: { type: clob, notnull: true }
