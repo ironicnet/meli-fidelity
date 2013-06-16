@@ -18,6 +18,12 @@
 <div class="row-fluid">
    <?php if($order->getChatMessages()->count() > 0): ?>
 
+   <?php $messages = $order->getChatMessages(); foreach($messages as $message): ?>
+
+   
+
+   <?php endforeach; ?>
+
    <?php else: ?>
 
    <div class="span12 alert alert-info">No hay mensajes aun</div>
