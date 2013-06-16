@@ -1,0 +1,13 @@
+cache/*
+!cache/.ignore
+config/databases.yml
+log/*
+!log/.ignore
+web/uploads/*
+data/sql
+data/search/
+lib/filter/doctrine/base/Base*
+lib/form/doctrine/base/Base*
+lib/model/doctrine/base/Base*
+plugins/.*
+nbproject/*

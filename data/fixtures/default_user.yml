@@ -1,0 +1,21 @@
+sfGuardUser:
+  User_admin:
+    first_name:     Matías
+    last_name:      Roldán
+    email_address:  matiasalejoroldan@gmail.com
+    username:       admin
+    password:       admin
+    is_super_admin: true
+    Groups:         [Group_admin]
+
+sfGuardGroup:
+  Group_admin:
+    name:           admin
+    description:    Administradores
+    Permissions:    [Permission_admin]
+
+
+sfGuardPermission:
+  Permission_admin:
+    name:           admin
+    description:    Credencial de administrador

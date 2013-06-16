@@ -1,0 +1,27 @@
+all: 
+  sfGuardPlugin:
+    login_logo_src: logo_backend.jpg
+    signin_links: true
+  tmcTwitterBootstrapPlugin:
+    bootstrap_path:              bootstrap.min.css # for custom theme
+    responsive_bootstrap_path:   /tmcTwitterBootstrapPlugin/css/bootstrap-responsive.min.css
+    admin_styles_path:           /tmcTwitterBootstrapPlugin/css/styles.css
+    jquery_path:                 /tmcTwitterBootstrapPlugin/js/jquery.min.js
+    bootstrap_js_path:           /tmcTwitterBootstrapPlugin/js/bootstrap.min.js
+    admin_js_path:               /tmcTwitterBootstrapPlugin/js/global.js
+
+#    # The route/URI to use for the nav bar's "brand" link
+#    profile_route: @homepage?username=
+#    # The link next for the nav bar's "brand" link
+    dashboard_name: Project Name
+    header:
+      menu:
+        Settings:
+          credentials: [admin]
+          dropdown:
+            Edit settings:
+              route: cs_setting
+            
+
+    footer:
+      copyright:          "Project Name &copy; <?php echo date("Y") ?>"

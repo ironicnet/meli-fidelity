@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd" >
+<xliff version="1.0">
+  <file original="global" source-language="en" datatype="plaintext">
+    <header/>
+    <body>
+      <trans-unit>
+        <source>Username</source>
+        <target>Usuario</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Password</source>
+        <target>Contraseña</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Username or E-Mail</source>
+        <target>Usuario o Email</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Remember</source>
+        <target>Recordar</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Signin</source>
+        <target>Conectar</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Forgot your password?</source>
+        <target>¿Olvidó su contraseña?</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Want to register?</source>
+        <target>¿Desea registrarse?</target>
+      </trans-unit>
+      <trans-unit>
+        <source>You don't have the required permission to access this page.</source>
+        <target>No tiene los permisos requeridos para acceder a esta página.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Do not worry, we can help you get back in to your account safely! Fill out the form below to request an e-mail with information on how to reset your password.</source>
+        <target>No se preocupe, podemos ayudarlo a volver a su cuenta! Complete el siguiente formulario para solicitar un email con información sobre como recuperar su contraseña.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Request</source>
+        <target>Solicitar</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

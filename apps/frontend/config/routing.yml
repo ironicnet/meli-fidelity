@@ -1,0 +1,14 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+items:
+  url: /items
+  param: { module: items, action: index }
+
+orders:
+  url: /items/orders
+  param: { module: orders, action: index }
+
+homepage:
+  url:   /
+  param: { module: default, action: index }

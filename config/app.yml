@@ -1,0 +1,74 @@
+prod:
+  content_cleaner:
+    enabled: true
+
+all:
+  tmcContactPlugin:
+    subject_widget:
+      enabled:              false
+      #type:                 choice #or text
+      #choices:              { 'support': 'Need help', 'other': 'Other topic' }
+    attachment_enabled:     false
+
+  lyMediaManager:
+    # root directory name (used by task media:create-root)
+    media_root: media
+    # thumbnails settings
+    thumbnails:
+      square:
+        width: 100
+        height: 100
+        shave: true
+      small:
+        width: 120
+        height: 60
+        shave: true
+      medium:
+        width: 300
+        height: 250
+        shave: true
+    # name ddof folder where thumbnails will be created
+    thumbnail_folder: thumbs
+    # thumbnails will be created only for these mime-types
+    create_thumbnails_for:
+      - image/jpeg
+      - image/png
+      - image/gif
+    # only files with these extensions can be uploaded
+    allowed_extensions:
+      - jpg
+      - png
+      - gif
+      - txt
+      - pdf
+    # only files of these mime-types can be uploaded
+    mime_types:
+      - image/jpeg
+      - image/png
+      - image/gif
+      - text/plain
+    # libray used for thumbnail creation: true ImageMagick, false (default) GD
+    use_ImageMagick: false
+
+  mails:
+    from: developmentserver1@gmail.com
+    from_name: Development Server
+    to: matiasalejoroldan@gmail.com
+
+  imagecache:
+    transformer:    sfThumbnailPlugin
+    square:
+      width: 100
+      height: 100
+    small:
+      width: 120
+      height: 60
+    medium:
+      width: 300
+      height: 250
+
+  developer_email: matiasalejoroldan@gmail.com
+  sf_guard_plugin:
+    default_from_email: developmentserver1@gmail.com
+    default_from_name: Development Server
+    

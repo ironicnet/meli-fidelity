@@ -1,0 +1,6 @@
+all:
+  driver:
+    class: fpErrorNotifierDriverMailNative
+    options:
+      to: 'matiasalejoroldan@gmail.com'
+      from: 'developmentserver1@gmail.com'

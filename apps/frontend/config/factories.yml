@@ -1,0 +1,62 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/05-Factories
+
+prod:
+  logger:
+    class: sfAggregateLogger
+    param:
+      level: err
+      loggers:
+        sf_file_debug:
+          class: sfFileLogger
+          param:
+            level: err
+            file: %SF_LOG_DIR%/%SF_APP%_%SF_ENVIRONMENT%.log
+
+test:
+  storage:
+    class: sfSessionTestStorage
+    param:
+      session_path: %SF_TEST_CACHE_DIR%/sessions
+
+  response:
+    class: sfWebResponse
+    param:
+      send_http_headers: false
+
+  mailer:
+    param:
+      delivery_strategy: none
+
+dev:
+  mailer:
+    param:
+      delivery_strategy: single_address
+      delivery_address: <?php echo sfConfig::get("app_developer_email"); ?>
+
+all:
+  routing:
+    class: sfPatternRouting
+    param:
+      generate_shortest_url:            true
+      extra_parameters_as_query_string: true
+
+  user:
+    class: %SF_APP%User
+
+  view_cache_manager:
+    class: sfViewCacheManager
+    param:
+      cache_key_use_vary_headers: true
+      cache_key_use_host_name:    true
+      
+  mailer:
+    param:
+      transport:
+        class: Swift_SmtpTransport
+        param:
+          host:       smtp.gmail.com
+          port:       465
+          encryption: ssl
+          username: developmentserver1@gmail.com
+          password: 8t3$9S044n]x5x9

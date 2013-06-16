@@ -1,0 +1,23 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    title:        Project name | Backend
+    # description:  ~
+    # keywords:     ~
+    language:     es
+    robots:       index, follow
+
+  stylesheets:
+    - styles_backend
+
+  javascripts:
+    - tiny_mce/tiny_mce.js
+    - /lyMediaManagerPlugin/js/lymedia_tiny.js
+
+  has_layout:     true
+  layout:         layout
