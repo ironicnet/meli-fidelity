@@ -19,10 +19,10 @@
 
          // Conecto
          $this->MELI->initConnect();
-         
+
          // Guardo usuario
          $response = $this->MELI->getWithAccessToken('/users/me');
-         $this->MELIUser = json_decode($response['body']);
+         $this->MELIUser = $response['statusCode'] == 200 ? json_decode($response['body']) : false;
       }
 
       public function getMELI()
@@ -37,16 +37,31 @@
 
       public function getMELIUserId()
       {
-         return $this->MELIUser ? $this->MELIUser['id'] : NULL;
+         return $this->MELIUser ? $this->MELIUser->id : NULL;
       }
 
       public function getOrders()
       {
-         $orders_response = $this->getMELI()->getWithAccessToken("/orders/search", array(
-            "buyer" => $this->MELIUser->id
-         ));
+         if($this->getMELIUser())
+         {
+            $orders_response = $this->getMELI()->getWithAccessToken("/orders/search", array(
+               "buyer" => $this->MELIUser->id
+            ));
 
-         $orders_json_decoded = json_decode($orders_response['body']);
-         return $orders_json_decoded->results;
+            $orders_json_decoded = json_decode($orders_response['body']);
+            return $orders_json_decoded->results;
+         }
+      }
+
+      public function getPublications()
+      {
+         if($this->getMELIUser())
+         {
+            $publications_response = $this->getMELI()->getWithAccessToken("/users/" . $this->getMELIUserId() . "/items/search");
+            $publications_json_decoded = json_decode($publications_response['body']);
+            var_dump($publications_json_decoded->results); die();
+            return $publications_json_decoded->results;
+         }
+
       }
    }
