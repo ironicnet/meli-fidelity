@@ -21,6 +21,8 @@ default:
   javascripts:
     - jquery-2.0.2.min.js
     - bootstrap.min.js 
+    - jquery.form.min.js
+    - global.js
 
   has_layout:     true
   layout:         layout

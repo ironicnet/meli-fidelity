@@ -1,26 +1,19 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
-items:
-  url: /items
-  param: { module: items, action: index }
-
-orders:
-  url: /items/orders
-  param: { module: orders, action: index }
-
 order_detail: 
   url: /order/:id/detail
   param: { module: orders, action: detail }
 
-orderMessages:
+messages:
   url: /order/:id/messages
   param: { module: orders, action: getMessages }
-newMessage:
-  url: /order/:id/newmessage
+
+message_new:
+  url: /order/newmessage
   param: { module: orders, action: newMessage }
   sf_requirements: 
-    sf_method:[post]
+    sf_method: [post]
 
 homepage:
   url:   /

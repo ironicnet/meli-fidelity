@@ -2,7 +2,7 @@ User:
   actAs:
     Timestampable: ~
   columns:
-    meli_id: { type: string(255), notnull: true }
+    meli_id: { type: integer, notnull: true }
     username: { type: string(255), notnull: true }
     email: { type: string(255), notnull: true }
 
@@ -27,17 +27,20 @@ MeliOrder:
     status: { type: string(50), notnull: true }
 
 ChatMessage:
+  options:
+    orderBy: created_at DESC
   actAs:
     Timestampable: ~
   columns:
     meli_order_id: { type: integer, notnull: true }
     user_id: { type: integer, notnull: true }
-    event_type: { type: string(50), notnull: true }
     message: { type: clob, notnull: true }
   relations:
     MeliOrder:
+      foreign: meli_order_id
       onDelete: CASCADE
       foreignAlias: ChatMessages
     User:
+      foreign: meli_id
       onDelete: CASCADE
       foreignAlias: ChatMessages

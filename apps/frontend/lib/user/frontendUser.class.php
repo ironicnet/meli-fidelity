@@ -25,7 +25,10 @@
          $this->MELIUser = $response['statusCode'] == 200 ? json_decode($response['body']) : false;
 
          // Sincronizacion
-         // 1) Ventas
+         // 1) Usuario
+         UserTable::getInstance()->createOrUpdate($this->getMELIUser());
+
+         // 2) Ventas
 
          $sales = $this->getSales();
          foreach($sales as $sale)
@@ -33,7 +36,7 @@
             MeliOrderTable::getInstance()->createOrUpdate($sale);   
          }
 
-         // 2) Compras
+         // 3) Compras
          $orders = $this->getOrders();
          foreach($orders as $order)
          {

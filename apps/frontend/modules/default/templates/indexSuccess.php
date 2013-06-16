@@ -72,5 +72,5 @@
       </div>
 
       <?php else: ?>
-      <a  style="margin-top: 50px; " class="btn btn-success btn-xlarge btn-block" href="<?php echo $sf_user->getMELI()->getLoginUrl(); ?>"><i class="icon-user"></i> Login con Mercado Libre</a>
+      <a  style="margin-top: 50px;" class="btn btn-success btn-xlarge btn-block" href="<?php echo $sf_user->getMELI()->getLoginUrl(); ?>"><i class="icon-user"></i> Login</a>
       <?php endif; ?>
