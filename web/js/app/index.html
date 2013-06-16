@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script data-require="jquery@2.0.1" data-semver="2.0.1" src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="messageCenter.js"></script>
+    <!--<script src="test.js"></script>-->
+    <script type="text/javascript">
+		function JQueryCourier() {
+			this.get = function(base_url, id, lastUpdate, callback) {
+				// console.log('get', base_url, id, lastUpdate, callback, arguments);
+				var jqxhr = $.get(base_url.replace(':id', id), function(data) {
+					// console.log("success", data, arguments);
+				})
+					.always(function(data, state) {
+					// console.log("always", data, arguments);
+					if (state == 'success') {
+						callback(null, data);
+					} else {
+						callback(data.statusText, null);
+					}
+				});
+			};
+			this.send = function(base_url, id, message, callback) {
+
+				var jqxhr = $.post(base_url.replace(':id', id), message, function() {}).always(function(data, state) {
+					console.log("always", data, arguments);
+					if (callback) {
+						if (state == 'success') {
+							callback(null, data);
+						} else {
+							callback(data, null);
+						}
+					}
+				});
+				console.log('send', arguments)
+			};
+			return this;
+		}
+		var messageCenter = new MessageCenter({
+			courier: new JQueryCourier(),
+			base_url: '/order/:id/messages'
+		});
+    </script>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    <div id="test1">
+    	<div class='chatbox'>
+    		<div class='chatLog'>
+    			<ul></ul>
+    		</div>
+			<div class='actions'>
+				<input type='text' class='messageText' onkeypress="if(e.which==13)
+					{
+						messageCenter.sendToHub(1, this.value, function(err, data){
+							console.log('Message sent', err,data);
+							if (err==null)
+							{
+								this.value='';
+							}
+						});
+					}"/>
+			</div>
+		</div>
+    </div>
+
+    <script type="text/javascript">messageCenter.suscribeToHub(1, function(hubId, data)
+    			{
+    				console.log(data);
+    				if (data)
+    				{
+						var list = $(".chatbox .chatLog ul");
+    						console.log(list);
+
+    					for (var i = data.length - 1; i >= 0; i--) {
+    						var message = data[i];
+    						console.log(i, message);
+							list.append("<li class='message" + message.event_type + "'>" + message.message + "</li>");;
+    					};
+    				}
+				});</script>
+  </body>
+
+</html>
