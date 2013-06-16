@@ -13,9 +13,9 @@
             </tr>
          </thead>
          <tbody>
-            <?php foreach($orders->getRawValue() as $order):  var_dump($order); ?>
+            <?php foreach($orders->getRawValue() as $order): ?>
             <tr>
-               <td><?php echo $order->order_items[0]->title; ?></td>
+               <td><?php echo $order->order_items[0]->item->title; ?></td>
                <td>Precio 1</td>
             </tr>
             <?php endforeach; ?>
