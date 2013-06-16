@@ -26,21 +26,30 @@
 
          // Sincronizacion
          // 1) Usuario
-         UserTable::getInstance()->createOrUpdate($this->getMELIUser());
+         if($this->getMELIUser())
+         {
+            UserTable::getInstance()->createOrUpdate($this->getMELIUser());
+         }
 
          // 2) Ventas
 
          $sales = $this->getSales();
-         foreach($sales as $sale)
+         if($sales)
          {
-            MeliOrderTable::getInstance()->createOrUpdate($sale);   
+            foreach($sales as $sale)
+            {
+               MeliOrderTable::getInstance()->createOrUpdate($sale);   
+            }
          }
 
          // 3) Compras
          $orders = $this->getOrders();
-         foreach($orders as $order)
+         if($orders)
          {
-            MeliOrderTable::getInstance()->createOrUpdate($order);
+            foreach($orders as $order)
+            {
+               MeliOrderTable::getInstance()->createOrUpdate($order);
+            }
          }
       }
 
