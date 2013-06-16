@@ -1,5 +1,7 @@
 <?php if($sf_user->getMELIUser()): ?>
 
+<?php if($orders->count() > 0): ?>
+
 <div class="row-fluid">
    <div class="span12">
       <h4>Mis compras</h4>
@@ -11,9 +13,9 @@
             </tr>
          </thead>
          <tbody>
-            <?php foreach($orders->getRawValue() as $order): ?>
+            <?php foreach($orders->getRawValue() as $order):  var_dump($order); ?>
             <tr>
-               <td><?php echo $order->title; ?></td>
+               <td><?php echo $order->order_items[0]->title; ?></td>
                <td>Precio 1</td>
             </tr>
             <?php endforeach; ?>
@@ -22,6 +24,9 @@
 
    </div>
 </div>
+
+<?php endif; ?>
+
 <div class="row-fluid">
    <div class="span12">
       <h4>Mis publicaciones</h4>
