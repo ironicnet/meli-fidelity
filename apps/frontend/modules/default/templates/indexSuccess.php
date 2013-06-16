@@ -11,18 +11,12 @@
             </tr>
          </thead>
          <tbody>
+            <?php foreach($orders->getRawValue() as $order): ?>
             <tr>
-               <td>Producto 1</td>
+               <td><?php echo $order->title; ?></td>
                <td>Precio 1</td>
             </tr>
-            <tr>
-               <td>Producto 1</td>
-               <td>Precio 1</td>
-            </tr>
-            <tr>
-               <td>Producto 1</td>
-               <td>Precio 1</td>
-            </tr>
+            <?php endforeach; ?>
          </tbody>
       </table>
 

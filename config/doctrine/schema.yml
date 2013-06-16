@@ -6,7 +6,7 @@ User:
     username: { type: string(255), notnull: true }
     email: { type: string(255), notnull: true }
 
-Order:
+MeliOrder:
   actAs:
     Timestampable: ~
   columns:
@@ -19,3 +19,10 @@ ChatMessage:
     meli_order_id: { type: integer, notnull: true }
     user_id: { type: integer, notnull: true }
     message: { type: clob, notnull: true }
+  relations:
+    MeliOrder:
+      onDelete: CASCADE
+      foreignAlias: ChatMessages
+    User:
+      onDelete: CASCADE
+      foreignAlias: ChatMessages
