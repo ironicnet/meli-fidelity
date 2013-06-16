@@ -31,12 +31,12 @@ class ChatMessageTable extends Doctrine_Table
     public function createMessage($idOrder, $idUser, $eventType, $message)
     {
 	$chatMessage = new ChatMessage();
-	$chatMessage->setMeliOrderId($idOrder);
-	$chatMessage->setUserId($idUser);
-	$chatMessage->setEventType($eventType);
-	$chatMessage->setMessage($message);
+	$chatMessage.setMeliOrderId($idOrder);
+	$chatMessage.setUserId($idUser);
+	$chatMessage.setEventType($eventType);
+	$chatMessage.setMessage($message);
 
-	$chatMessage->save();
+	$chatMessage.save();
 	return $chatMessage;
     }
 }

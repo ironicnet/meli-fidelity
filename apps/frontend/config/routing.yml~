@@ -12,7 +12,7 @@ orderMessages:
   url: /order/:id/messages
   param: { module: orders, action: getMessages }
 newMessage:
-  url: /order/:id/newmessage
+  url: /order/:id/messages
   param: { module: orders, action: newMessage }
   sf_requirements: 
     sf_method:[post]
