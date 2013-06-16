@@ -2,13 +2,14 @@
 
 <div class="row-fluid">
    <div class="span12">
-      <h4>Mis compras</h4>
+      <h3>Mis compras</h3>
 
       <?php if($orders): ?>
 
       <table class="table">
          <thead>
             <tr>
+               <th></th>
                <th>Producto</th>
                <th>Precio</th>
             </tr>
@@ -16,8 +17,9 @@
          <tbody>
             <?php foreach($orders->getRawValue() as $order): ?>
             <tr>
-               <td><?php echo $order->order_items[0]->item->title; ?></td>
-               <td><?php echo format_currency($order->order_items[0]->unit_price, $order->order_items[0]->currency_id); ?></td>
+               <td><img src="<?php echo $order['thumbnail']; ?>" /></td>
+               <td><?php echo $order['title']; ?></td>
+               <td><?php echo format_currency($order['unit_price'], $order['currency_id']); ?></td>
                <td><td>
                   </tr>
                   <?php endforeach; ?>
@@ -36,7 +38,7 @@
 
       <div class="row-fluid">
          <div class="span12">
-            <h4>Mis publicaciones</h4>
+            <h3>Mis publicaciones</h3>
 
             <?php if($publications): ?>
 
@@ -44,14 +46,16 @@
                <thead>
                   <tr>
                      <th>Producto</th>
-                     <th>Precio</th>
+                     <th>En stock</th>
+                     <th>Vendidos</th>
                   </tr>
                </thead>
                <tbody>
                   <?php foreach($publications as $publication): ?>
                   <tr>
-                     <td>Producto 1</td>
-                     <td>Precio 1</td>
+                     <td><?php echo $publication['title']; ?></td>
+                     <td><?php echo $publication['available_quantity']; ?></td>
+                     <td><?php echo $publication['sold_quantity']; ?></td>
                   </tr>
                   <?php endforeach; ?>
                </tbody>

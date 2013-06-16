@@ -45,11 +45,39 @@
          if($this->getMELIUser())
          {
             $orders_response = $this->getMELI()->getWithAccessToken("/orders/search", array(
-               "buyer" => $this->MELIUser->id
+               "buyer" => $this->getMELIUserId()
             ));
 
-            $orders_json_decoded = json_decode($orders_response['body']);
-            return $orders_json_decoded->results;
+            $preparsed_orders = array(); // Voy a armar un array con los campos que necesito y la foto que no la trae por default en los items
+
+            $orders = $orders_response['statusCode'] == 200 ? ($orders_response['json']['results']) : array();
+
+            // Armo array base sin foto
+            foreach($orders as $order)
+            {
+               $preparsed_order = array(
+                  "date_created" => $order['date_created'],
+                  "id" => $order['order_items'][0]['item']['id'],
+                  "title" => $order['order_items'][0]['item']['title'],
+                  "quantity" => $order['order_items'][0]['quantity'],
+                  "unit_price" => $order['order_items'][0]['unit_price'],
+                  "currency_id" => $order['order_items'][0]['currency_id'],
+                  "seller" => $order['seller']['nickname']
+               );
+
+               $preparsed_orders[$preparsed_order['id']] = $preparsed_order;
+            }
+
+            // Busco las fotos de todos los ids
+            $thumbnails_response = $this->getMELI()->getWithAccessToken("/items?ids=" . implode(",", array_keys($preparsed_orders)) . "&attributes=id,thumbnail");
+            $thumbnails = $thumbnails_response['statusCode'] == 200 ? $thumbnails_response['json'] : array();
+
+            foreach($thumbnails as $thumbnail)
+            { 
+               $preparsed_orders[$thumbnail['id']]['thumbnail'] = $thumbnail['thumbnail'];
+            }
+
+            return $preparsed_orders;
          }
       }
 
@@ -57,10 +85,13 @@
       {
          if($this->getMELIUser())
          {
+            // Primero traigo los id's de todas las publicaciones
             $publications_response = $this->getMELI()->getWithAccessToken("/users/" . $this->getMELIUserId() . "/items/search");
             $publications_json_decoded = json_decode($publications_response['body']);
-            var_dump($publications_json_decoded->results); die();
-            return $publications_json_decoded->results;
+            $publications_ids = $publications_json_decoded->results;
+
+            $publications_items_response = $this->getMELI()->getWithAccessToken("/items?ids=" . implode(",", $publications_ids) . "&attributes=id,title,price,base_price,currency_id,initial_quantity,available_quantity,sold_quantity,thumbnail");
+            return $publications_items_response['statusCode'] == 200 ? $publications_items_response['json'] : array();
          }
 
       }
