@@ -18,7 +18,6 @@ ChatMessage:
   columns:
     meli_order_id: { type: integer, notnull: true }
     user_id: { type: integer, notnull: true }
-    event_type: { type: string(50), notnull: true }
     message: { type: clob, notnull: true }
   relations:
     MeliOrder:

@@ -17,8 +17,8 @@ class ordersActions extends sfActions
   {
 	$orderId = $request->getParameter('orderId');
 	$userId = 1;//$this->getUser()->getMELIUserId();
-	$eventType = $request->getParameter('eventType');
-	$message = $request->getParameter('message');
+	$eventType = $this->getParameter('eventType');
+	$message = $this->getParameter('message');
 
         $this->logMessage('New Message: ', 'info');
         $this->logMessage("	orderId: $orderId" , 'info');
